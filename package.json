@@ -20,14 +20,14 @@
     "starter kit"
   ],
   "scripts": {
-    "build": "rimraf dist && webpack --bail --progress --profile",
-    "server": "webpack-dev-server --history-api-fallback --inline --progress",
-    "test": "karma start",
-    "test-watch": "karma start --auto-watch --no-single-run",
-    "e2e": "node ./node_modules/.bin/protractor",
-    "e2e-watch": "./node_modules/.bin/protractor --elementExplorer",
+    "build": "./node_modules/.bin/rimraf dist && webpack --bail --progress --profile",
+    "server": "./node_modules/.bin/webpack-dev-server --history-api-fallback --inline --progress",
     "start": "npm run server",
-    "stats": "webpack --json --profile > stats.json"
+    "stats": "./node_modules/.bin/webpack --json --profile > stats.json",
+    "test": "./node_modules/.bin/karma start",
+    "test-watch": "./node_modules/.bin/karma start --auto-watch --no-single-run",
+    "e2e": "./node_modules/.bin/protractor protractor.jasmine.conf.js",
+    "e2e-watch": "npm run e2e -- --elementExplorer",
   },
   "repository": {
     "type": "git",

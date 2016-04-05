@@ -1,3 +1,5 @@
+var env = require('./environment.js');
+
 exports.config = {
   baseUrl: 'http://localhost:8080/',
 
@@ -31,7 +33,8 @@ exports.config = {
     browser.ignoreSynchronization = true;
   },
 
-  chromeDriver: '/usr/local/lib/node_modules/selenium-standalone/.selenium/chromedriver/2.21-x64-chromedriver',
+  seleniumServerJar: env.seleniumServerJar,
 
-  seleniumServerJar: './node_modules/protractor/selenium/selenium-server-standalone-2.48.2.jar'
+  chromeDriver: env.chromeDriver
+
 };
