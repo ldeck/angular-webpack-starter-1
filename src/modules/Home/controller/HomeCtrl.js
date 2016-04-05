@@ -10,8 +10,11 @@ export default class HomeController {
   constructor(TitleService) {
     "ngInject";
 
+    this.title = TitleService.title();
     TitleService.setTitle({
       newTitle: 'Home'
     });
+
+    this.url = 'https://github.com/ldeck/angular-webpack';
   }
 }

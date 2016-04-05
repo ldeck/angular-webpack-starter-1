@@ -22,4 +22,3 @@ describe('Controller: Home', () => {
     expect(TitleService).toBeDefined();
   });
 });
-

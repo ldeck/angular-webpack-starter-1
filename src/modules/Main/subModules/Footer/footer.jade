@@ -1,0 +1,29 @@
+- list = [
+-    {name: "AngularJS 1.x!",
+-    url: "https://angularjs.org"},
+-    {name: "webpack",
+-    url: "https://webpack.github.io"},
+-    {name: "protractor",
+-    url: "https://github.com/angular/protractor"},
+-    {name: "andrewkeig/protractor-cucumber",
+-    url: "https://github.com/andrewkeig/protractor-cucumber"},
+-    {name: "zombiQWERTY/angular-webpack-starter",
+-    url: "https://github.com/zombiQWERTY/angular-webpack-starter"},
+-    {name: "JustinWinthers/angular-webpack-starter",
+-    url: "https://github.com/JustinWinthers/angular-webpack-starter"},
+-    {name: "AngularClass/NG6-todomvc-starter",
+-    url: "https://github.com/AngularClass/NG6-todomvc-starter"},
+-    {name: "halversondm/webpack-express-angular",
+-    url: "https://github.com/halversondm/webpack-express-angular"},
+-    {name: "preboot/angular-webpack",
+-    url: "https://github.com/preboot/angular-webpack"},
+-    {name: "mattfritz/protractor-cucumber-framework",
+-    url: "https://github.com/mattfritz/protractor-cucumber-framework"}
+- ]
+
+footer.footer
+    p Thanks to
+    ul
+        each item in list
+            li
+                a(href=item.url) !{item.name}

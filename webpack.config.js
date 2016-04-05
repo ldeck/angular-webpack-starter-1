@@ -13,7 +13,7 @@ var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
 
 /** Root module of our app */
-var rootModule = 'Starter';
+var rootModule = 'Main';
 
 module.exports = (function makeWebpackConfig () {
   /**

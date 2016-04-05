@@ -4,7 +4,7 @@ describe('Home page', () => {
   });
 
   it('should have a title', () => {
-    expect(browser.getTitle()).toEqual('Home –– Angular Webpack Starter Kit');
+    expect(browser.getTitle()).toEqual('Home –– Your Angular Webpack Starter Kit');
   });
 
   it('should have page content', () => {

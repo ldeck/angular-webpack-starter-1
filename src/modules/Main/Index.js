@@ -3,7 +3,7 @@
  * ========================================================================== */
 
 import angular           from 'angular';
-import StarterController from './controller/StarterCtrl';
+import MainController    from './controller/MainCtrl';
 
 import PointerEvents     from './directives/PointerEvents/PointerEventsDirective';
 import ThirdParties      from './directives/ThirdParties/ThirdPartiesDirective';
@@ -46,4 +46,4 @@ import './stylesheets/layout.scss';
  */
 export default angular.module('Starter.App', [
   PointerEvents, ThirdParties, TitleService
-]).controller('StarterController', StarterController).name;
+]).controller('MainController', MainController).name;

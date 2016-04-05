@@ -12,18 +12,21 @@ import angular from 'angular';
 const Service = () => {
   "ngInject";
 
-  class TitleService {
-    static setTitle(params = {}) {
-      const defaultTitle = params.default  || 'Angular Webpack Starter Kit';
+  class TitleUtil {
+    static title(params = {}) {
+      const defaultTitle = params.default  || 'Your Angular Webpack Starter Kit';
       const newTitle     = params.newTitle || '';
-      const devider      = params.devider  || ' –– ';
-
-      document.title = newTitle + (newTitle ? devider : '') + defaultTitle;
+      const divider      = params.divider  || ' –– ';
+      return newTitle + (newTitle ? divider : '') + defaultTitle;
+    }
+    static setTitle(params = {}) {
+      document.title = TitleUtil.title(params);
     }
   }
 
   return {
-    setTitle: TitleService.setTitle
+    setTitle: TitleUtil.setTitle,
+    title: TitleUtil.title
   };
 };
 

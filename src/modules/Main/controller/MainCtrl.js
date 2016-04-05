@@ -1,13 +1,12 @@
 /**
  * @module Root controller
- * @class StarterController
+ * @class MainController
  */
-export default class StarterController {
+export default class MainController {
   /**
    * @constructor Bootstrap app.
    */
   constructor() {
     "ngInject";
-
   }
 }
