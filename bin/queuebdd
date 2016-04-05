@@ -1,0 +1,34 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use feature ':5.10';
+
+use threads;
+use Fcntl qw(:flock);
+use Digest::MD5 qw(md5 md5_hex md5_base64);
+
+my $COUNTER = '/tmp/queuebdd.data';
+my $SEMAPHORE = $COUNTER . ".lock";
+my $count = 1;
+
+say qq{Locking...};
+
+open(LOCK, ">$SEMAPHORE") or die "Can't open $SEMAPHORE ($!)";
+flock(LOCK, LOCK_EX);
+
+if (-e $COUNTER) {
+    open(DATA, $COUNTER) or die "Can't open $COUNTER ($!)";
+    $count = <DATA>;
+    close DATA;
+
+    $count++;
+}
+
+open(DATA, "+>$COUNTER") or die "Can't open $COUNTER ($!)";
+print DATA $count;
+close DATA;
+
+close LOCK;
+
+exec 'bin/dequeuebdd';

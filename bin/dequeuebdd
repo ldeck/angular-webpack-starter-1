@@ -1,0 +1,59 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use feature ':5.10';
+
+use threads;
+use Fcntl qw(:flock);
+
+my $COUNTER = '/tmp/queuebdd.data';
+my $SEMAPHORE = $COUNTER . ".lock";
+
+my $count;
+
+# forward refs
+sub spawn;
+sub zero;
+sub runWips;
+sub testRunWips;
+
+
+sub semilock {
+    open(LOCK, ">$SEMAPHORE") or die "Can't open $SEMAPHORE ($!)";
+    flock(LOCK, LOCK_EX);
+}
+sub unlock {
+    close LOCK;
+}
+sub getcount {
+    my $num;
+    open(DATA, $COUNTER) or die "Can't open $COUNTER ($!)";
+    $num = <DATA>;
+    close DATA;
+    return $num;
+}
+sub zero {
+    my $num = 0;
+    open(DATA, "+>$COUNTER") or die "Can't open $COUNTER ($!)";
+    print DATA $num;
+    close DATA;
+    return $num;
+}
+sub runWips {
+    system 'npm run bdd-wip';
+    testRunWips();
+}
+sub testRunWips {
+    semilock();
+    my $num = getcount();
+    if ($num == 1) {
+        zero();
+        unlock();
+        runWips();
+    } else {
+        unlock();
+    }
+}
+
+testRunWips();
